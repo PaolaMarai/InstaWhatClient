@@ -19,16 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.ExpresionesRegulares;
 import com.instawhat.R;
-import com.instawhat.model.Usuario;
 import com.instawhat.model.services.network.ApiEndPoint;
-import com.instawhat.model.services.network.JsonAdapterLogin;
-import com.instawhat.model.services.network.JsonAdapterUsuario;
 import com.instawhat.model.services.network.VolleyS;
-import com.instawhat.model.services.persitance.Default;
 import com.instawhat.model.services.persitance.User;
-import com.instawhat.pojo.LoginPojo;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -139,7 +132,7 @@ public class Registro extends AppCompatActivity {
 
                     Map<String, String> param = new HashMap<>();
                     param.put("correo", this.etEmail.getText().toString());
-                    param.put("username", this.etEmail.getText().toString());
+                    param.put("username", this.etUsername.getText().toString());
                     param.put("password", this.etPassword.getText().toString());
 
                     JSONObject jsonObject = new JSONObject(param);

@@ -3,6 +3,9 @@
     package="com.instawhat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:allowBackup="true"
@@ -11,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.NipValidacion"></activity>
+        <activity android:name=".gui.EditarPerfil"></activity>
+        <activity android:name=".gui.EditorEstado" />
+        <activity android:name=".gui.EditarFoto" />
+        <activity android:name=".gui.NipValidacion" />
         <activity android:name=".gui.Registro" />
         <activity android:name=".gui.MainMenu" />
         <activity android:name=".gui.MainActivity">

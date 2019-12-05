@@ -9,68 +9,71 @@
     android:paddingStart="30dp"
     android:paddingEnd="30dp"
     android:paddingBottom="30dp"
-    tools:context=".gui.Registro">
+    tools:context=".gui.EditarPerfil">
+
 
     <TextView
-        android:id="@+id/tvUsername"
+        android:id="@+id/twEditarPerfilUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Username" />
 
     <EditText
-        android:id="@+id/etUsernameRegistro"
+        android:id="@+id/etEditarUsername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Email" />
-
-    <EditText
-        android:id="@+id/etEmailRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Password" />
-
-    <EditText
-        android:id="@+id/etPasswordRegistroRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword" />
-
-    <TextView
-        android:id="@+id/tvConfirmacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Confirmar password" />
-
-    <EditText
-        android:id="@+id/etConfirmacionRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword" />
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnRegistrarUser"
+        android:id="@+id/btnEditarUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Registrar" />
+        android:text="Cambiar username" />
+
+    <TextView
+        android:id="@+id/twEditarPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Password actual" />
+
+    <EditText
+        android:id="@+id/etEditarPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/twEditarPasswordNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Password nuevo" />
+
+    <EditText
+        android:id="@+id/etEditarPasswordConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnEditarPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Cambiar contraseña" />
+
+    <Button
+        android:id="@+id/btnEditarEstadoPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Editar estado" />
+
+    <Button
+        android:id="@+id/btnEditarFotoPerfilPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Cambiar Foto de perfil" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

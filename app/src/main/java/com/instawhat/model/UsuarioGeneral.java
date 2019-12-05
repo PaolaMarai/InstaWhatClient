@@ -6,6 +6,7 @@ public class UsuarioGeneral {
     protected String password;
     protected String email;
     protected String username;
+    protected String estado;
 
     public String getPassword() {
         return password;
@@ -31,4 +32,11 @@ public class UsuarioGeneral {
         this.username = username;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

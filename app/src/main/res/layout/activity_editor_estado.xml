@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,47 +9,28 @@
     android:paddingStart="30dp"
     android:paddingEnd="30dp"
     android:paddingBottom="30dp"
-    tools:context=".gui.MainActivity">
+    tools:context=".gui.EditorEstado">
 
     <TextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/twEditarEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Email" />
+        android:text="Estado" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etEditarEstadoEstado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Password" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/bttnLogIn"
+        android:id="@+id/btnCambiarEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Log in" />
+        android:text="Cambiar estado" />
 
-    <Button
-        android:id="@+id/btnRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Registro" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

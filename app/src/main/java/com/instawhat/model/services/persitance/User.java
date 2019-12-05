@@ -2,8 +2,11 @@ package com.instawhat.model.services.persitance;
 
 public class User {
 
-    public static String email;
-    public static String password;
+    private static String email;
+    private static String password;
+    private static String estado;
+    private static String foto;
+    private static String username;
 
     public static String getEmail() {
         return email;
@@ -19,5 +22,29 @@ public class User {
 
     public static void setPassword(String password) {
         User.password = password;
+    }
+
+    public static String getEstado() {
+        return estado;
+    }
+
+    public static void setEstado(String estado) {
+        User.estado = estado;
+    }
+
+    public static String getFoto() {
+        return foto;
+    }
+
+    public static void setFoto(String foto) {
+        User.foto = foto;
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        User.username = username;
     }
 }
