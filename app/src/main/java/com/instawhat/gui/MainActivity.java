@@ -10,23 +10,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.R;
+import com.instawhat.model.Usuario;
 import com.instawhat.model.services.network.ApiEndPoint;
 import com.instawhat.model.services.network.JsonAdapterLogin;
+import com.instawhat.model.services.network.JsonAdapterUsuario;
 import com.instawhat.model.services.network.VolleyS;
 import com.instawhat.model.services.persitance.Default;
 import com.instawhat.model.services.persitance.User;
 import com.instawhat.pojo.LoginPojo;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public static String TAG = "MainActivity";
     private VolleyS volley;
     protected RequestQueue fRequestQueue;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
         this.btnSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginRequest();
+                //loginRequest();
+                getFotoPerfil();
+
             }
         });
 
@@ -69,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void loginRequest(){
 
@@ -99,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
                             } else {
                                 Default d = Default.getInstance(MainActivity.this);
                                 d.setToken(result.getToken());
+                                Usuario usuario = JsonAdapterUsuario.userAdapter(response);
+                                User.setEmail(usuario.getEmail());
+                                User.setUsername(usuario.getUsername());
+                                User.setEstado(usuario.getEstado());
 
                                 Toast.makeText(MainActivity.this, "TK:" + d.getToken(), Toast.LENGTH_SHORT).show();
 
@@ -109,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         } catch (JSONException e) {
+                            e.printStackTrace();
                             Toast.makeText(MainActivity.this, "Cannot parse response", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -126,6 +137,52 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+
+        volley.addToQueue(jsonObjectRequest);
+
+    }
+
+
+    private void getFotoPerfil(){
+
+        Map<String, String> param = new HashMap<>();
+        param.put("correo", etEmail.getText().toString());
+
+        JSONObject jsonObject = new JSONObject(param);
+        System.out.println(jsonObject);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                ApiEndPoint.usuarioFotoPerfil, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String foto = JsonAdapterUsuario.fotoPerflAdapter(response);
+                    User.setFoto(foto);
+                } catch (JSONException e) {
+                    Toast.makeText(MainActivity.this, "Cannot parse data",
+                            Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "Testing network");
+                    }
+                })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                Default defaults = Default.getInstance(MainActivity.this);
+                headers.put("authorization", defaults.getToken());
+                return headers;
+            }
+        };
+
+        System.out.println(jsonObjectRequest);
         volley.addToQueue(jsonObjectRequest);
 
     }

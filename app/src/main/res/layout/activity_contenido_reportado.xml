@@ -11,7 +11,7 @@
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
         android:paddingBottom="30dp"
-        tools:context=".ContenidoReportadoActivity">
+        tools:context=".gui.ContenidoReportadoActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reciclerReport"

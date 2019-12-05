@@ -4,6 +4,7 @@ public class Usuario extends UsuarioGeneral {
 
     private String  status;
     private String nip;
+
     public Usuario() {
     }
 
@@ -22,4 +23,5 @@ public class Usuario extends UsuarioGeneral {
     public void setNip(String nip) {
         this.nip = nip;
     }
+
 }

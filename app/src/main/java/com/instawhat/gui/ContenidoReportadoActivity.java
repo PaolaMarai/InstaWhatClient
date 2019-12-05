@@ -1,8 +1,10 @@
-package com.instawhat;
+package com.instawhat.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.instawhat.R;
 
 public class ContenidoReportadoActivity extends AppCompatActivity {
 

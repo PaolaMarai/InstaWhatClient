@@ -10,11 +10,20 @@ public class JsonAdapterUsuario {
 
     public static Usuario userAdapter(JSONObject jsonObject) throws JSONException {
         Usuario res = new Usuario();
-        res.setUsername(jsonObject.getString("user.username"));
-        res.setEmail(jsonObject.getString("user.correo"));
-        res.setPassword(jsonObject.getString("user.password"));
+        res.setUsername(jsonObject.getString("username"));
+        res.setEmail(jsonObject.getString("correo"));
+        res.setEstado(jsonObject.getString("estado"));
         return res;
     }
 
+    public static String fotoPerflAdapter(JSONObject jsonObject) throws JSONException {
+        String fotoString = jsonObject.getString("foto");
+        return fotoString;
+    }
+
+    public static String estadoAdapter(JSONObject jsonObject) throws JSONException {
+        String estado = jsonObject.getString("descripcion");
+        return estado;
+    }
 
 }
