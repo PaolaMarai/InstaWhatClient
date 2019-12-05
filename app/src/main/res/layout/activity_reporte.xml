@@ -8,7 +8,7 @@
     tools:context=".gui.ReporteActivity">
 
     <TextView
-        android:id="@+id/textView"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30pt"
@@ -23,11 +23,10 @@
         android:layout_marginTop="20dp"
         android:textSize="20dp"/>
 
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/etMotivo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="10dp"
         android:layout_gravity="center"/>
 
@@ -43,7 +42,15 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:id="@+id/etJustificacion"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar reporte"
+        android:layout_gravity="center"
+        android:id="@+id/btEnviar"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

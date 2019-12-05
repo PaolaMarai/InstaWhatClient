@@ -64,7 +64,13 @@ public class MainMenu extends AppCompatActivity {
         }
 
         if (id == R.id.ContactosMenu){
-            Intent intent = new Intent(MainMenu.this, EditarPerfil.class);
+            Intent intent = new Intent(MainMenu.this, ContactosActivity.class);
+            MainMenu.this.startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.NuevoContactoMenu){
+            Intent intent = new Intent(MainMenu.this, AgregarContactoActivity.class);
             MainMenu.this.startActivity(intent);
             return true;
         }

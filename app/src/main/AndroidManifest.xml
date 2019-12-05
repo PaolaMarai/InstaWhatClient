@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContactoItemActivity"></activity>
+        <activity android:name=".gui.AgregarContactoActivity"></activity>
         <activity android:name=".gui.ContactosActivity" />
         <activity android:name=".gui.EditarPerfil" />
         <activity android:name=".gui.EditorEstado" />

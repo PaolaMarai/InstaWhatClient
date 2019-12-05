@@ -1,14 +1,16 @@
-package com.instawhat;
+package com.instawhat.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ContactoItemActivity extends AppCompatActivity {
+import com.instawhat.R;
+
+public class AgregarContactoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contacto_list_row);
+        setContentView(R.layout.activity_agregar_contacto);
     }
 }

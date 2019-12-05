@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".gui.ContactosActivity">
+tools:context=".gui.AgregarContactoActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -20,16 +20,26 @@
             android:inputType="textEmailAddress" />
 
         <Button
-            android:id="@+id/btBuscarContacto"
+            android:id="@+id/btBuscarUsuaio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buscar"
-            />
+            android:text="Buscar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rvContactos"/>
+
+        android:id="@+id/rvUsuarios"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Agregar"
+        android:textIsSelectable="false" />
+
+
 </LinearLayout>

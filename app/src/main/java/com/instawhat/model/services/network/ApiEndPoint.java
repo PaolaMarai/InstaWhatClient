@@ -1,7 +1,7 @@
 package com.instawhat.model.services.network;
 
 public abstract class ApiEndPoint {
-    private static String host = "192.168.1.254:8081"; //local
+    private static String host = "10.50.7.1:8081"; //local
     //private static String host = "157.245.115.130:8888";
     private static String baseURL = "http://" + host + "/api";
     public static String ping = baseURL + "/ping";

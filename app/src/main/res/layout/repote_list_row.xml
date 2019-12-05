@@ -6,7 +6,7 @@
 
 
     <ImageView
-        android:id="@+id/ivReporte"
+        android:id="@+id/ivFotoReporte"
         android:layout_width="154dp"
         android:layout_height="106dp"
         android:contentDescription="TODO"
@@ -21,14 +21,14 @@
             android:id="@+id/tvUsuariReporte"
             android:layout_width="259dp"
             android:layout_height="52dp"
-            android:text="TextView" />
+            android:text="Usuario" />
 
         <TextView
             android:id="@+id/NumeroReportes"
             android:layout_width="259dp"
             android:layout_height="53dp"
 
-            android:text="TextView" />
+            android:text="Reportes" />
     </LinearLayout>
 
 </LinearLayout>
