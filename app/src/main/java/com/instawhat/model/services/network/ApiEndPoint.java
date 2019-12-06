@@ -12,5 +12,7 @@ public abstract class ApiEndPoint {
     public static String usuarioFotoPerfil = baseURL + "/fotoperfil";
     public static String usuarioCambiarFotoPerfil = usuarioFotoPerfil + "/editar";
     public static String usuarioEditarEstado = usuario + "//editarestado";
+    public static String foto = baseURL + "/foto";
+    public static String publicarFoto = foto + "/publicar";
 
 }
