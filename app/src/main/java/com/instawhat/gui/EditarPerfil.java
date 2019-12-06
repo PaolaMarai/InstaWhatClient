@@ -18,6 +18,7 @@ public class EditarPerfil extends AppCompatActivity {
     private Button btnCambiarFoto;
     private EditText etUsername;
 
+    private Button btnEditarEstado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +27,20 @@ public class EditarPerfil extends AppCompatActivity {
         this.btnCambiarFoto = findViewById(R.id.btnEditarFotoPerfilPage);
         this.etUsername = findViewById(R.id.etEditarUsername);
         this.etUsername.setText(User.getUsername());
+        this.btnEditarEstado = findViewById(R.id.btnEditarEstadoPage);
 
         this.btnCambiarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditarPerfil.this, EditarFoto.class);
+                EditarPerfil.this.startActivity(intent);
+            }
+        });
+
+        this.btnEditarEstado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditarPerfil.this, EditorEstado.class);
                 EditarPerfil.this.startActivity(intent);
             }
         });

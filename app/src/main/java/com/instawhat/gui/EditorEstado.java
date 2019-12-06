@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,6 +24,8 @@ import com.instawhat.R;
 import com.instawhat.model.services.network.ApiEndPoint;
 import com.instawhat.model.services.network.JsonAdapterActivacionResponse;
 import com.instawhat.model.services.network.VolleyS;
+
+import com.instawhat.model.services.persitance.Default;
 import com.instawhat.model.services.persitance.User;
 import com.instawhat.pojo.ActivacionPOJO;
 
@@ -78,7 +82,9 @@ public class EditorEstado extends AppCompatActivity {
         System.out.println(User.getEmail());
         JSONObject jsonObject = new JSONObject(param);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT,
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+
                 ApiEndPoint.usuarioEditarEstado,jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -100,7 +106,18 @@ public class EditorEstado extends AppCompatActivity {
                         Log.e(TAG, "Testing network");
                     }
                 }
-        );
+        )
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                Default defaults = Default.getInstance(EditorEstado.this);
+                headers.put("authorization", defaults.getToken());
+                return headers;
+            }
+        };
+
 
         volley.addToQueue(jsonObjectRequest);
 

@@ -6,6 +6,9 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import android.content.Intent;
 
+
+import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,11 +19,11 @@ import com.instawhat.gui.fotoMW.EncodeDecode;
 import com.instawhat.model.services.network.ApiEndPoint;
 import com.instawhat.model.services.network.JsonAdapterFotoPerfil;
 import com.instawhat.model.services.network.VolleyS;
+
 import com.instawhat.model.services.persitance.User;
+import com.instawhat.model.services.persitance.Default;
 
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -79,6 +82,14 @@ public class EditarFoto extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
             foto_gallery.setImageURI(imageUri);
+
+            foto_gallery.setImageURI(imageUri);
+            int ancho = 600;
+            int alto = 600;
+            LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ancho, alto);
+            foto_gallery.setLayoutParams(params);
+            this.fotoString = EncodeDecode.encodeImage(foto_gallery);
+
             cambiarFoto();
         }
     }
@@ -86,7 +97,10 @@ public class EditarFoto extends AppCompatActivity {
 
     private void cambiarFoto(){
 
+
         this.fotoString = EncodeDecode.encodeImage(foto_gallery);
+
+
 
         Map<String, String> param = new HashMap<>();
         param.put("correo", User.getEmail());
@@ -103,15 +117,11 @@ public class EditarFoto extends AppCompatActivity {
                         try {
                             Boolean result = JsonAdapterFotoPerfil.fotoPerfilResponseAdapter(response);
 
+
+                            System.out.println(response);
                             if (result)  {
-
-                                foto_gallery.setImageURI(imageUri);
-                                int ancho = 600;
-                                int alto = 600;
-                                LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ancho, alto);
-                                foto_gallery.setLayoutParams(params);
-
                                 Toast.makeText(EditarFoto.this, "Foto cambiada", Toast.LENGTH_SHORT).show();
+                                User.setFoto(fotoString);
                             }
 
                         } catch (JSONException e) {
@@ -125,12 +135,23 @@ public class EditarFoto extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
 
-                        Toast.makeText(EditarFoto.this, "usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(EditarFoto.this, "Permiso denegado", Toast.LENGTH_SHORT).show();
 
                         Log.e(TAG, "Testing network");
                     }
                 }
-        );
+
+        ){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                Default defaults = Default.getInstance(EditarFoto.this);
+                headers.put("authorization", defaults.getToken());
+                return headers;
+            }
+        };
 
         volley.addToQueue(jsonObjectRequest);
 

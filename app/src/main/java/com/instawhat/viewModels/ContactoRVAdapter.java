@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.instawhat.R;
@@ -27,15 +26,15 @@ public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.Vi
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView lbcorreo;
-        public ViewHolder(@NonNull View itemView) {
+
+        public ViewHolder(View itemView) {
             super(itemView);
             lbcorreo= itemView.findViewById(R.id.tvContactoCorreo);
         }
     }
 
-    @NonNull
     @Override
     public ContactoRVAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.contacto_list_row, parent, false);
@@ -45,7 +44,7 @@ public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         holder.lbcorreo.setText(mDataSet.get(position).getCorreo());
     }
 

@@ -61,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
         this.btnSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //loginRequest();
                 getFotoPerfil();
+
+                 loginRequest();
 
             }
         });
@@ -101,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, NipValidacion.class);
                                 MainActivity.this.startActivity(intent);
                                 finish();
-
                             } else {
                                 Default d = Default.getInstance(MainActivity.this);
                                 d.setToken(result.getToken());
@@ -109,9 +111,8 @@ public class MainActivity extends AppCompatActivity {
                                 User.setEmail(usuario.getEmail());
                                 User.setUsername(usuario.getUsername());
                                 User.setEstado(usuario.getEstado());
-
                                 Toast.makeText(MainActivity.this, "TK:" + d.getToken(), Toast.LENGTH_SHORT).show();
-
+                                getFotoPerfil();
                                 Intent intent = new Intent(MainActivity.this, MainMenu.class);
                                 MainActivity.this.startActivity(intent);
                                 finish();
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Toast.makeText(MainActivity.this, "usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
 
-                        Log.e(TAG, "Testing network");
+                        Log.e(TAG, "" + error.getMessage());
                     }
                 }
         );
@@ -149,9 +150,8 @@ public class MainActivity extends AppCompatActivity {
         param.put("correo", etEmail.getText().toString());
 
         JSONObject jsonObject = new JSONObject(param);
-        System.out.println(jsonObject);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 ApiEndPoint.usuarioFotoPerfil, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        System.out.println(jsonObjectRequest);
+
         volley.addToQueue(jsonObjectRequest);
 
     }

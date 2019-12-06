@@ -107,10 +107,11 @@ public class ContactosActivity extends AppCompatActivity {
         Map<String, String> param = new HashMap<>();
         param.put("correo", User.getEmail());
 
-        JSONObject jsonObject  = new JSONObject(param);
+        JSONObject jsonObject = new JSONObject(param);
+        JSONArray jsonArray  = new JSONArray();
+        jsonArray.put(jsonObject);
 
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, ApiEndPoint.contactos,null,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, ApiEndPoint.contactos,jsonArray,
                 new Response.Listener<JSONArray>(){
             @Override
             public void onResponse(JSONArray response) {

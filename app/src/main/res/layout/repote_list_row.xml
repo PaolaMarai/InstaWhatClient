@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
 
+
     <ImageView
         android:id="@+id/ivFotoReporte"
         android:layout_width="154dp"

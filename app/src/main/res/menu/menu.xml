@@ -24,10 +24,9 @@
         android:title="Favoritos" />
 
     <item
-    android:id="@+id/ContactosMenu"
-    android:title="Contactos"/>
-    <item
         android:id="@+id/NuevoContactoMenu"
-        android:title="Agregar contacto"/>
-
+        android:title="Agregar Contacto" />
+    <item
+        android:id="@+id/ContactosMenu"
+        android:title="Mis contactos" />
 </menu>

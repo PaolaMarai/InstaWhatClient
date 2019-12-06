@@ -16,4 +16,5 @@ public abstract class ApiEndPoint {
     public static String contactos = contacto + "/" ;
     public static String agregarContacto = contacto + "/agregar";
     public static String buscarContacto = contacto + "/buscar";
+
 }
