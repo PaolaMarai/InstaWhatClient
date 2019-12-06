@@ -11,10 +11,15 @@ public abstract class ApiEndPoint {
     public static String usuarioActivacion = usuarioRegistro + "/activar";
     public static String usuarioFotoPerfil = baseURL + "/fotoperfil";
     public static String usuarioCambiarFotoPerfil = usuarioFotoPerfil + "/editar";
-    public static String usuarioEditarEstado = usuario + "//cambiarestado";
+
     public static String contacto = baseURL + "/contacto";
     public static String contactos = contacto + "/" ;
     public static String agregarContacto = contacto + "/agregar";
     public static String buscarContacto = contacto + "/buscar";
+
+    public static String usuarioEditarEstado = usuario + "//editarestado";
+    public static String foto = baseURL + "/foto";
+    public static String publicarFoto = foto + "/publicar";
+
 
 }
