@@ -52,32 +52,33 @@ public class MainMenu extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.EditarPerfilMenu) {
-            Intent intent = new Intent(MainMenu.this, EditarPerfil.class);
-            MainMenu.this.startActivity(intent);
-            return true;
+        Intent intent;
+
+        switch (id) {
+
+            case R.id.EditarPerfilMenu:
+                intent = new Intent(MainMenu.this, EditarPerfil.class);
+                MainMenu.this.startActivity(intent);
+                return true;
+
+            case R.id.ContactosMenu:
+                intent = new Intent(MainMenu.this, ContactosActivity.class);
+                MainMenu.this.startActivity(intent);
+                return true;
+
+            case R.id.NuevoContactoMenu:
+                intent = new Intent(MainMenu.this, AgregarContactoActivity.class);
+                MainMenu.this.startActivity(intent);
+                return true;
+
+            case R.id.SubirFotoMenu:
+                intent = new Intent(MainMenu.this, PublicarFoto.class);
+                MainMenu.this.startActivity(intent);
+                return true;
+
+            default:
+                break;
         }
-        if (id == R.id.ContactosMenu){
-            Intent intent = new Intent(MainMenu.this, ContactosActivity.class);
-
-            MainMenu.this.startActivity(intent);
-            return true;
-        }
-        if (id == R.id.NuevoContactoMenu){
-            Intent intent = new Intent(MainMenu.this, AgregarContactoActivity.class);
-            MainMenu.this.startActivity(intent);
-            return true;
-        }
-
-        if (id == R.id.SubirFotoMenu) {
-            Intent intent = new Intent(MainMenu.this, PublicarFoto.class);
-            MainMenu.this.startActivity(intent);
-            return true;
-        }
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
