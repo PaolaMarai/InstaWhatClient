@@ -20,6 +20,7 @@ public class JsonAdapterFoto {
         /*String fecha;
         Date fechaparsed;*/
 
+
         for(int i=0; i<jsonArray.length() ; i++){
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             Foto foto = new Foto();

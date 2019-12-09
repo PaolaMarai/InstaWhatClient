@@ -22,11 +22,13 @@ public abstract class ApiEndPoint {
     public static String agregarContacto = contacto + "/agregar";
     public static String buscarContacto = contacto + "/buscar";
 
-    public static String usuarioEditarEstado = usuario + "//editarestado";
+    public static String usuarioEditarEstado = usuario + "/editarestado";
+    public static String usuarioEditarUsername = usuario + "/editarusername";
+    public static String usuerioEditarPassword = usuario + "/editarpassword";
     public static String foto = baseURL + "/foto";
     public static String publicarFoto = foto + "/publicar";
 
-    public static String obternerFotos = foto + "/get";
+    public static String obternerFotos = foto + "/consultarpublicaciones";
 
 
 }

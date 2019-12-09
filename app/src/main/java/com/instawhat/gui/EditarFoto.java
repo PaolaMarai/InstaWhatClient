@@ -17,7 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.R;
 import com.instawhat.gui.fotoMW.EncodeDecode;
 import com.instawhat.model.services.network.ApiEndPoint;
-import com.instawhat.model.services.network.JsonAdapterFotoPerfil;
+import com.instawhat.model.services.network.JsonAdapterEditResponse;
 import com.instawhat.model.services.network.VolleyS;
 
 import com.instawhat.model.services.persitance.User;
@@ -113,11 +113,7 @@ public class EditarFoto extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            Boolean result = JsonAdapterFotoPerfil.fotoPerfilResponseAdapter(response);
-
-
-                            System.out.println(response);
-                            if (result)  {
+                            if (JsonAdapterEditResponse.editResponseAdapter(response))  {
                                 Toast.makeText(EditarFoto.this, "Foto cambiada", Toast.LENGTH_SHORT).show();
                                 User.setFoto(fotoString);
                             }

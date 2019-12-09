@@ -23,12 +23,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.R;
 import com.instawhat.gui.fotoMW.EncodeDecode;
 import com.instawhat.model.services.network.ApiEndPoint;
-import com.instawhat.model.services.network.JsonAdapterFotoPerfil;
 import com.instawhat.model.services.network.VolleyS;
 import com.instawhat.model.services.persitance.Default;
 import com.instawhat.model.services.persitance.User;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -106,7 +104,7 @@ public class PublicarFoto extends AppCompatActivity {
                         //TODO
                         /*
                         try {
-                            Boolean result = JsonAdapterFotoPerfil.fotoPerfilResponseAdapter(response);
+                            Boolean result = JsonAdapterEditResponse.fotoPerfilResponseAdapter(response);
 
                             System.out.println(response);
                             if (result)  {

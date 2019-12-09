@@ -61,11 +61,8 @@ public class MainActivity extends AppCompatActivity {
         this.btnSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //loginRequest();
+                loginRequest();
                 getFotoPerfil();
-
-                 loginRequest();
 
             }
         });

@@ -5,9 +5,9 @@ import com.instawhat.pojo.LoginPojo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class JsonAdapterFotoPerfil {
+public class JsonAdapterEditResponse {
 
-    public static boolean fotoPerfilResponseAdapter(JSONObject jsonObject) throws JSONException {
+    public static boolean editResponseAdapter(JSONObject jsonObject) throws JSONException {
         int res = jsonObject.getInt("nModified");
 
         if (res == 1) {

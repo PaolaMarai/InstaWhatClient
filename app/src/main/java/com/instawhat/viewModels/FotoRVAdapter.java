@@ -40,10 +40,10 @@ public class FotoRVAdapter extends RecyclerView.Adapter<FotoRVAdapter.ViewHolder
         this.mDataSet=mDataSet;
     }
 
-    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType){
+    public FotoRVAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull ViewGroup parent, int viewType){
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_foto_row, parent, false);
-        v.setOnClickListener((View.OnClickListener) this);
+       // v.setOnClickListener((View.OnClickListener) this);
         ViewHolder vh= new ViewHolder(v);
         return vh;
     }

@@ -1,16 +1,12 @@
 package com.instawhat.gui;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,8 +21,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.R;
 import com.instawhat.model.Foto;
 import com.instawhat.model.services.network.ApiEndPoint;
+import com.instawhat.model.services.network.JsonAdapterEditResponse;
 import com.instawhat.model.services.network.JsonAdapterFoto;
-import com.instawhat.model.services.network.JsonAdapterFotoPerfil;
 import com.instawhat.model.services.network.MyJsonArrayRequest;
 import com.instawhat.model.services.network.VolleyS;
 import com.instawhat.model.services.persitance.Default;
@@ -52,6 +48,8 @@ public class MainMenu extends AppCompatActivity {
     protected RequestQueue requestQueue;
     private RecyclerView rv;
     private FotoRVAdapter rvAdapter;
+    private int fotosConsultadas = 0;
+    private int fotosPedidas = 3;
 
 
     @Override
@@ -70,13 +68,14 @@ public class MainMenu extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
         rv.addItemDecoration(dividerItemDecoration);
-        //feed();
+        feed();
     }
 
     private void feed(){
-        Map<String, String> param = new HashMap<>();
-        param.put("skip","0");
-        param.put("limit","5");
+        Map<String, Integer> param = new HashMap<>();
+        param.put("skip",this.fotosConsultadas);
+        this.fotosConsultadas += this.fotosPedidas;
+        param.put("limit",this.fotosPedidas);
 
         JSONObject jsonObject = new JSONObject(param);
         MyJsonArrayRequest jsonArrayRequest = new MyJsonArrayRequest(Request.Method.POST, ApiEndPoint.obternerFotos, jsonObject, new Response.Listener<JSONArray>() {
@@ -84,6 +83,7 @@ public class MainMenu extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<Foto> fotos = JsonAdapterFoto.getFotos(response);
+                    System.out.println(response);
                     setupRV(fotos);
                 } catch (JSONException e) {
                     Toast.makeText(MainMenu.this, "Cannot parse response", Toast.LENGTH_SHORT).show();
@@ -155,61 +155,6 @@ public class MainMenu extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-
-    private void publidarFoto(String foto){
-
-        Map<String, String> param = new HashMap<>();
-        param.put("correo", User.getEmail());
-        param.put("foto", foto);
-
-        JSONObject jsonObject = new JSONObject(param);
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT,
-                ApiEndPoint.usuarioCambiarFotoPerfil,jsonObject,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            Boolean result = JsonAdapterFotoPerfil.fotoPerfilResponseAdapter(response);
-
-                            System.out.println(response);
-                            if (result)  {
-                                Toast.makeText(MainMenu.this, "Foto publicada", Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            Toast.makeText(MainMenu.this, "Cannot parse response", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-
-                        Toast.makeText(MainMenu.this, "Permiso denegado", Toast.LENGTH_SHORT).show();
-
-                        Log.e(TAG, "Testing network");
-                    }
-                }
-        ){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json");
-                Default defaults = Default.getInstance(MainMenu.this);
-                headers.put("authorization", defaults.getToken());
-                return headers;
-            }
-        };
-
-        volley.addToQueue(jsonObjectRequest);
-
     }
 
 

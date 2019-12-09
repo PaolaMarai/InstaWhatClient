@@ -23,6 +23,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.R;
 import com.instawhat.model.services.network.ApiEndPoint;
 import com.instawhat.model.services.network.JsonAdapterActivacionResponse;
+import com.instawhat.model.services.network.JsonAdapterEditResponse;
+import com.instawhat.model.services.network.JsonAdapterFoto;
 import com.instawhat.model.services.network.VolleyS;
 
 import com.instawhat.model.services.persitance.Default;
@@ -74,7 +76,6 @@ public class EditorEstado extends AppCompatActivity {
 
     private void cambiarEstado() {
 
-
         Map<String, String> param = new HashMap<>();
         param.put("correo", User.getEmail());
         param.put("estado", this.etEstado.getText().toString());
@@ -89,10 +90,20 @@ public class EditorEstado extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                       User.setEstado(etEstado.getText().toString());
-                        Intent intent = new Intent(EditorEstado.this, MainMenu.class);
-                        EditorEstado.this.startActivity(intent);
-                        finish();
+                        try {
+                            if (JsonAdapterEditResponse.editResponseAdapter(response)) {
+                                User.setEstado(etEstado.getText().toString());
+                                Intent intent = new Intent(EditorEstado.this, MainMenu.class);
+                                EditorEstado.this.startActivity(intent);
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(EditorEstado.this, "Error", Toast.LENGTH_SHORT).show();
+
+                            Log.e(TAG, "Testing network");
+                        }
+
                     }
 
                 },

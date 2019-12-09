@@ -38,10 +38,12 @@
         android:layout_gravity="center"
         android:text="Password actual" />
 
+
     <EditText
-        android:id="@+id/etEditarPassword"
+        android:id="@+id/etPasswordActual"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"/>
 
     <TextView
         android:id="@+id/twEditarPasswordNuevo"
@@ -51,9 +53,23 @@
         android:text="Password nuevo" />
 
     <EditText
+        android:id="@+id/etEditarPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/twEditarPasswordConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="confirme Password" />
+
+    <EditText
         android:id="@+id/etEditarPasswordConfirm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/btnEditarPassword"
