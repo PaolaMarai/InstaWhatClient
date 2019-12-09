@@ -1,7 +1,12 @@
 package com.instawhat.model.services.network;
 
 public abstract class ApiEndPoint {
-    private static String host = "10.50.7.1:8081"; //local
+    // Usen el puerto 8888
+    // para probar con cel
+    //private static String host = "10.50.7.1:8888"; //local
+    // para emulador
+    private static String host = "10.0.2.2:8888"; //local
+    //para server
     //private static String host = "157.245.115.130:8888";
     private static String baseURL = "http://" + host + "/api";
     public static String ping = baseURL + "/ping";
