@@ -1,11 +1,11 @@
 package com.instawhat.model.services.network;
 
 public abstract class ApiEndPoint {
-    private static String host = "10.50.7.1:8081"; //local
+    private static String host = "192.168.1.121:8080"; //local
     //private static String host = "157.245.115.130:8888";
     private static String baseURL = "http://" + host + "/api";
     public static String ping = baseURL + "/ping";
-    public static String usuario = baseURL + "/usuario";
+    public static String usuario = baseURL + "/Usuario";
     public static String usuarioLogin = baseURL + "/login";
     public static String usuarioRegistro = baseURL + "/registro";
     public static String usuarioActivacion = usuarioRegistro + "/activar";
@@ -20,6 +20,8 @@ public abstract class ApiEndPoint {
     public static String usuarioEditarEstado = usuario + "//editarestado";
     public static String foto = baseURL + "/foto";
     public static String publicarFoto = foto + "/publicar";
+
+    public static String obternerFotos = foto + "/get";
 
 
 }

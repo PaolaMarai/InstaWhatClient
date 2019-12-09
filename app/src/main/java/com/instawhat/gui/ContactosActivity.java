@@ -22,12 +22,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+
 import com.instawhat.ExpresionesRegulares;
 import com.instawhat.R;
 import com.instawhat.model.Contacto;
 import com.instawhat.model.services.network.ApiEndPoint;
 import com.instawhat.model.services.network.JsonAdapterContacto;
+import com.instawhat.model.services.network.MyJsonArrayRequest;
 import com.instawhat.model.services.network.VolleyS;
 import com.instawhat.model.services.persitance.Default;
 import com.instawhat.model.services.persitance.User;
@@ -66,7 +67,11 @@ public class ContactosActivity extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), llm.getOrientation());
         rv.addItemDecoration(dividerItemDecoration);
-        getContactos();
+
+        Map<String, String> paramContactos = new HashMap<>();
+        paramContactos.put("correo", User.getEmail());
+
+        getContactos(paramContactos);
 
 
         this.etBuscarCorreo.addTextChangedListener(new TextWatcher() {
@@ -103,15 +108,14 @@ public class ContactosActivity extends AppCompatActivity {
                 this.etBuscarCorreo.getText().toString());
     }
 
-    private void getContactos(){
-        Map<String, String> param = new HashMap<>();
-        param.put("correo", User.getEmail());
+
+
+    private void getContactos(Map<String, String> param){
+
 
         JSONObject jsonObject = new JSONObject(param);
-        JSONArray jsonArray  = new JSONArray();
-        jsonArray.put(jsonObject);
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, ApiEndPoint.contactos,jsonArray,
+        MyJsonArrayRequest jsonArrayRequest = new MyJsonArrayRequest(Request.Method.POST, ApiEndPoint.contactos,jsonObject,
                 new Response.Listener<JSONArray>(){
             @Override
             public void onResponse(JSONArray response) {
@@ -155,7 +159,11 @@ public class ContactosActivity extends AppCompatActivity {
     }
 
     private void btBuscarContactoContactos (){
-
+        this.etBuscarCorreo = findViewById(R.id.etBuscarCorreo);
+        Map<String, String> paramBusqueda = new HashMap<>();
+        paramBusqueda.put("correoContacto", etBuscarCorreo.getText().toString());
+        paramBusqueda.put("correo", User.getEmail());
+        getContactos(paramBusqueda);
     }
 }
 

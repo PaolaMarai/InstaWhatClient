@@ -68,8 +68,6 @@ public class MainMenu extends AppCompatActivity {
             MainMenu.this.startActivity(intent);
             return true;
         }
-        return super.onOptionsItemSelected(item);
-    
 
         if (id == R.id.SubirFotoMenu) {
             Intent intent = new Intent(MainMenu.this, PublicarFoto.class);
