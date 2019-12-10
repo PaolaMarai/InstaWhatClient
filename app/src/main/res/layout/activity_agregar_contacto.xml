@@ -20,26 +20,11 @@ tools:context=".gui.AgregarContactoActivity">
             android:inputType="textEmailAddress" />
 
         <Button
-            android:id="@+id/btBuscarUsuaio"
+            android:id="@+id/btAgregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buscar" />
+            android:text="Agregar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/rvUsuarios"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btAgregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Agregar"
-        android:textIsSelectable="false" />
-
 
 </LinearLayout>

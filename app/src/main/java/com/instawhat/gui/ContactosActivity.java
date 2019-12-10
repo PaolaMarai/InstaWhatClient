@@ -74,41 +74,7 @@ public class ContactosActivity extends AppCompatActivity {
         getContactos(paramContactos);
 
 
-        this.etBuscarCorreo.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (!validarEmail()) {
-                    Toast.makeText(ContactosActivity.this, "Email no válido", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        String correo = this.etBuscarCorreo.getText().toString();
-        this.btBuscarContacto.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                btBuscarContactoContactos();
-            }
-        });
     }
-
-    private boolean validarEmail() {
-        return ExpresionesRegulares.validarEmail(
-                this.etBuscarCorreo.getText().toString());
-    }
-
-
 
     private void getContactos(Map<String, String> param){
 
@@ -121,7 +87,12 @@ public class ContactosActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<Contacto> contactoList = JsonAdapterContacto.getContactos(response);
-                    setupRV(contactoList);
+                    if(contactoList.isEmpty()){
+                        setupRV(contactoList);
+                    }else {
+                        Toast.makeText(ContactosActivity.this, "Aún no tienes contactos registrados", Toast.LENGTH_SHORT).show();
+                    }
+
                 } catch (JSONException e) {
                     Toast.makeText(ContactosActivity.this, "Cannot parse response", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
@@ -149,12 +120,7 @@ public class ContactosActivity extends AppCompatActivity {
 
     private void setupRV(List<Contacto> contactos){
         final List<Contacto> contactoList = contactos;
-        rvAdapter = new ContactoRVAdapter(contactos, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Contacto contacto = contactoList.get(rv.getChildAdapterPosition(v));
-            }
-        });
+        rvAdapter = new ContactoRVAdapter(contactos);
         rv.setAdapter(rvAdapter);
     }
 

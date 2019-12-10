@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.instawhat.R;
@@ -12,18 +13,12 @@ import com.instawhat.model.Contacto;
 
 import java.util.List;
 
-public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.ViewHolder> implements View.OnClickListener {
+public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.ViewHolder>  {
     private List<Contacto> mDataSet;
     private View.OnClickListener Listener;
 
-    public ContactoRVAdapter(List<Contacto> contactos, View.OnClickListener onClickListener) {
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(Listener != null){
-            Listener.onClick(v);
-        }
+    public ContactoRVAdapter(List<Contacto> contactos) {
+        this.mDataSet=contactos;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -35,16 +30,19 @@ public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.Vi
         }
     }
 
+
+    @NonNull
     @Override
-    public ContactoRVAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull ViewGroup parent, int viewType) {
+    public ContactoRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.contacto_list_row, parent, false);
-        v.setOnClickListener(this);
+        //v.setOnClickListener(this);
         ViewHolder vh= new ViewHolder(v);
         return vh;
+
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ContactoRVAdapter.ViewHolder holder, int position) {
         holder.lbcorreo.setText(mDataSet.get(position).getCorreo());
     }
 
@@ -52,6 +50,4 @@ public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.Vi
     public int getItemCount() {
         return mDataSet.size();
     }
-
-
 }

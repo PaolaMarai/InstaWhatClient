@@ -9,11 +9,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.instawhat.R;
-import com.instawhat.gui.MainMenu;
 import com.instawhat.gui.fotoMW.EncodeDecode;
 import com.instawhat.model.Foto;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
