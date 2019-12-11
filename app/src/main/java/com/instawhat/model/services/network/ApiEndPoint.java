@@ -1,8 +1,8 @@
 package com.instawhat.model.services.network;
 
 public abstract class ApiEndPoint {
-   private static String host = "192.168.43.42:8080"; //local
-    //private static String host = "10.0.2.2:8888"; //local
+   //private static String host = "192.168.43.42:8080"; //local
+    private static String host = "10.0.2.2:8888"; //local
     //private static String host = "10.50.7.1:8888"; //local
     // para emulador
     //para server

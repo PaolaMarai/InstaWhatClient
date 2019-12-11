@@ -49,7 +49,7 @@ public class MainMenu extends AppCompatActivity {
     private RecyclerView rv;
     private FotoRVAdapter rvAdapter;
     private int fotosConsultadas = 0;
-    private int fotosPedidas = 3;
+    private int fotosPedidas = 100;
 
 
     @Override

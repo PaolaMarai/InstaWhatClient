@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.instawhat.R;
 import com.instawhat.model.services.network.ApiEndPoint;
 import com.instawhat.model.services.network.VolleyS;
+import com.instawhat.model.services.persitance.Default;
 import com.instawhat.model.services.persitance.User;
 
 import org.json.JSONObject;
@@ -36,12 +38,10 @@ public class AgregarContactoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        this.btAgregar = findViewById(R.id.btAgregar);
-        this.etBuscarCorreo = findViewById(R.id.etBuscarCorreo);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_contacto);
-
+        this.btAgregar = findViewById(R.id.btAgregar);
+        this.etBuscarCorreo = findViewById(R.id.etBuscarCorreo);
         this.btAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +71,7 @@ public class AgregarContactoActivity extends AppCompatActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            System.out.println(response);
                             Toast.makeText(AgregarContactoActivity.this, "Agregado", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AgregarContactoActivity.this, MainMenu.class);
                             AgregarContactoActivity.this.startActivity(intent);
@@ -85,7 +86,16 @@ public class AgregarContactoActivity extends AppCompatActivity {
                     Toast.makeText(AgregarContactoActivity.this, "Usuario inexistente o ya agregado", Toast.LENGTH_SHORT).show();
                 }
             }
-            );
+            ){
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/json");
+                    Default defaults = Default.getInstance(AgregarContactoActivity.this);
+                    headers.put("authorization", defaults.getToken());
+                    return headers;
+                }
+            };
         }
 
     }
