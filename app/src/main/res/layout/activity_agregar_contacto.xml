@@ -9,12 +9,14 @@ tools:context=".gui.AgregarContactoActivity">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginVertical="250dp"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/etBuscarCorreo"
             android:layout_width="310dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:ems="10"
             android:inputType="textEmailAddress" />
 
@@ -22,6 +24,7 @@ tools:context=".gui.AgregarContactoActivity">
             android:id="@+id/btAgregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Agregar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

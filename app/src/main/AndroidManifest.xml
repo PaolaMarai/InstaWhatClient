@@ -17,9 +17,10 @@
         <activity android:name=".gui.ContactosActivity" />
 
         <activity android:name=".gui.PublicarFoto"></activity>
-        <activity android:name=".gui.AgregarContactoActivity"/>
         <activity android:name=".gui.EditarPerfil" />
         <activity android:name=".gui.EditorEstado" />
+        <activity android:name=".gui.AgregarContactoActivity" />
+
         <activity android:name=".gui.EditarFoto" />
         <activity android:name=".gui.NipValidacion" />
         <activity android:name=".gui.Registro" />
