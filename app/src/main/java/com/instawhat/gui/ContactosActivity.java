@@ -87,7 +87,7 @@ public class ContactosActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 try {
                     final List<Contacto> contactoList = JsonAdapterContacto.getContactos(response);
-                    if(contactoList.isEmpty()){
+                    if(!contactoList.isEmpty()){
                         setupRV(contactoList);
                     }else {
                         Toast.makeText(ContactosActivity.this, "Aún no tienes contactos registrados", Toast.LENGTH_SHORT).show();
@@ -120,7 +120,7 @@ public class ContactosActivity extends AppCompatActivity {
 
     private void setupRV(List<Contacto> contactos){
         final List<Contacto> contactoList = contactos;
-        rvAdapter = new ContactoRVAdapter(contactos);
+        rvAdapter = new ContactoRVAdapter(contactoList);
         rv.setAdapter(rvAdapter);
     }
 

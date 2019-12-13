@@ -42,6 +42,10 @@ public class AgregarContactoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_agregar_contacto);
         this.btAgregar = findViewById(R.id.btAgregar);
         this.etBuscarCorreo = findViewById(R.id.etBuscarCorreo);
+
+        this.volley = VolleyS.getInstance(AgregarContactoActivity.this);
+        this.fRequestQueue = volley.getRequestQueue();
+
         this.btAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +54,7 @@ public class AgregarContactoActivity extends AppCompatActivity {
             }
         });
 
-        this.volley = VolleyS.getInstance(AgregarContactoActivity.this);
-        this.fRequestQueue = volley.getRequestQueue();
+
 
     }
 
@@ -63,12 +66,13 @@ public class AgregarContactoActivity extends AppCompatActivity {
             Map<String, String> param = new HashMap<>();
             param.put("correoContacto", contacto);
             param.put("correo", User.getEmail());
-
+            System.out.println("Si pasa");
             JSONObject jsonObject = new JSONObject(param);
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                     ApiEndPoint.agregarContacto,jsonObject,
                     new Response.Listener<JSONObject>() {
+
                         @Override
                         public void onResponse(JSONObject response) {
                             System.out.println(response);
@@ -79,13 +83,12 @@ public class AgregarContactoActivity extends AppCompatActivity {
                         }
 
                     },new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-
-                    Toast.makeText(AgregarContactoActivity.this, "Usuario inexistente o ya agregado", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Toast.makeText(AgregarContactoActivity.this, "Usuario inexistente o ya agregado", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
             ){
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
@@ -96,6 +99,8 @@ public class AgregarContactoActivity extends AppCompatActivity {
                     return headers;
                 }
             };
+
+            volley.addToQueue(jsonObjectRequest);
         }
 
     }
