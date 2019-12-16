@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/ChatMenu"
-        android:title="Chat"
+        android:title="Chats"
         />
     <item
         android:id="@+id/EditarPerfilMenu"
