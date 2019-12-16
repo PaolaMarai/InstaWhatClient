@@ -4,21 +4,21 @@ syntax = "proto3";
 //py -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. .\chat.proto
 
 service ChatAdmin {
-    // ENvia multiples mensjes al servidor
-    rpc SendMessage(MessageRequest) returns (stream SendMesageResponse);
+// ENvía mensjes al servidor
+rpc SendMessage(MessageRequest) returns (SendMesageResponse);
 
-    // Recupera múltipes mensajes del servidor _a partir de una fecha_
-    rpc GetMesseges(stream GetMessagesRequest) returns (stream MessagesResponse);
+// Recupera múltipes mensajes del servidor _a partir de una fecha_
+rpc GetMesseges(stream GetMessagesRequest) returns (stream MessagesResponse);
 
-    //crea un chat
-    rpc CreateChat(CreateChatRequest) returns (CreateChatResponse);
+//crea un chat
+rpc CreateChat(CreateChatRequest) returns (CreateChatResponse);
 
-    //recupera los chats en los que está incluido un usuairo
-    rpc GetChats(GetChatsRequest) returns (stream GetChatsResponse);
+//recupera los chats en los que está incluido un usuairo
+rpc GetChats(GetChatsRequest) returns (stream GetChatsResponse);
 
-    rpc UpdateMensage(MessageRequest) returns (MessagesResponse);
+rpc UpdateMensage(MessageRequest) returns (MessagesResponse);
 
-    rpc DeleteMesage(MessageRequest) returns (MessagesResponse);
+rpc DeleteMesage(MessageRequest) returns (MessagesResponse);
 }
 
 message GetChatsRequest {
@@ -27,6 +27,7 @@ message GetChatsRequest {
 
 message GetChatsResponse {
     Chat chat = 1;
+    repeated string usuarios = 2;
 }
 
 message CreateChatRequest {
@@ -38,9 +39,14 @@ message CreateChatResponse {
     int64 idchatServer = 1;
 }
 
+//hora y fecha deben ser enviados en formato string a partir de un date time
+//ejemplo 
+// 2019-12-15 
+// 02:38:03
 message GetMessagesRequest {
-    Date fecha = 1;
-    string idchat = 2;
+    string fecha = 1;
+    string hora = 2;
+    int64 idchat = 3;
 }
 
 message MessagesResponse {
@@ -58,12 +64,12 @@ message SendMesageResponse {
 message Chat {
     int64 idchat = 1;
     string nombre = 2;
+    int64 idprocedencia = 3;
 }
 
 message usuariosEnChat {
     Usuario usuario = 1;
     int64 idChat = 2;
-    int64 idchatprocedencia = 3;
 }
 
 message Usuario {
@@ -73,17 +79,18 @@ message Usuario {
 
 
 message Mensaje {
-    string idmensaje = 1;
+    int64 idmensaje = 1;
     string mensaje = 2;
     string estado = 3;
-    Date fecha = 4;
+    string fecha = 4;
     string correoremitente = 5;
     int64 idmensajeprocedencia = 6;
     int64 idchat = 7;
+    string hora = 8;
 }
 
 message Date {
     int64 year = 1;
     int64 month = 2;
     int64 day = 3;
-}
+  }
