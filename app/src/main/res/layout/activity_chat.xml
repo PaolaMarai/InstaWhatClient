@@ -8,9 +8,9 @@
     tools:context=".gui.ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reciclerChat"
+        android:id="@+id/rvMensajes"
         android:layout_width="match_parent"
-        android:layout_height="650sp"
+        android:layout_height="600sp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp" />
 
@@ -21,15 +21,18 @@
 
         <EditText
             android:id="@+id/mensage"
-            android:layout_width="357dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Escrnbt eun mensaje" />
+            android:text="Escribe un mensaje" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <Button
+            android:id="@+id/boton_enviar"
+            android:text="Enviar"
             android:layout_width="match_parent"
-            android:layout_height="46dp" />
+            android:layout_height="46dp"
+            />
 
     </LinearLayout>
 

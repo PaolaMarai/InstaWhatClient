@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -121,6 +122,15 @@ public class ContactosActivity extends AppCompatActivity {
     private void setupRV(List<Contacto> contactos){
         final List<Contacto> contactoList = contactos;
         rvAdapter = new ContactoRVAdapter(contactoList);
+
+        rvAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ContactosActivity.this, ChatActivity.class);
+                ContactosActivity.this.startActivity(intent);
+                finish();
+            }
+        });
         rv.setAdapter(rvAdapter);
     }
 

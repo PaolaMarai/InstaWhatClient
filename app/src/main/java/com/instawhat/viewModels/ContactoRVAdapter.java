@@ -13,7 +13,7 @@ import com.instawhat.model.Contacto;
 
 import java.util.List;
 
-public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.ViewHolder>  {
+public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.ViewHolder> implements View.OnClickListener {
     private List<Contacto> mDataSet;
     private View.OnClickListener Listener;
 
@@ -35,7 +35,7 @@ public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.Vi
     @Override
     public ContactoRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.contacto_list_row, parent, false);
-        //v.setOnClickListener(this);
+        v.setOnClickListener(this);
         ViewHolder vh= new ViewHolder(v);
         return vh;
 
@@ -49,5 +49,14 @@ public class ContactoRVAdapter extends RecyclerView.Adapter<ContactoRVAdapter.Vi
     @Override
     public int getItemCount() {
         return mDataSet.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.Listener=listener;
+    }
+    public void onClick(View view){
+        if(Listener != null){
+            Listener.onClick(view);
+        }
     }
 }

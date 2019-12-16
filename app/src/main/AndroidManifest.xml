@@ -20,7 +20,7 @@
         <activity android:name=".gui.EditarPerfil" />
         <activity android:name=".gui.EditorEstado" />
         <activity android:name=".gui.AgregarContactoActivity" />
-
+        <activity android:name=".gui.ChatActivity"/>
         <activity android:name=".gui.EditarFoto" />
         <activity android:name=".gui.NipValidacion" />
         <activity android:name=".gui.Registro" />
