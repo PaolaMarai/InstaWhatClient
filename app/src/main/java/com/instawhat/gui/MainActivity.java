@@ -16,6 +16,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.instawhat.ChatAdminGrpc;
+import com.instawhat.ChatOuterClass;
 import com.instawhat.R;
 import com.instawhat.model.Usuario;
 import com.instawhat.model.services.network.ApiEndPoint;
@@ -31,6 +33,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         this.etPassword = findViewById(R.id.etPassword);
         this.btnSingIn = findViewById(R.id.bttnLogIn);
         this.btnRegistrar = findViewById(R.id.btnRegistro);
-
         this.volley = VolleyS.getInstance(MainActivity.this);
         this.fRequestQueue = volley.getRequestQueue();
 
@@ -180,5 +184,4 @@ public class MainActivity extends AppCompatActivity {
         volley.addToQueue(jsonObjectRequest);
 
     }
-
 }

@@ -126,6 +126,7 @@ public class ContactosActivity extends AppCompatActivity {
         rvAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(ContactosActivity.this, ChatActivity.class);
                 ContactosActivity.this.startActivity(intent);
                 finish();
